@@ -1,5 +1,6 @@
 package com.crm.service;
 
+import com.bjpowernode.crm.commons.utils.MD5Util;
 import com.bjpowernode.crm.settings.domain.User;
 import com.bjpowernode.crm.settings.service.UserService;
 import com.crm.BaseTest;
@@ -30,4 +31,10 @@ public class UserServiceTest extends BaseTest {
 
         }
     }
+    @Test
+    public void tt(){
+        System.out.println(MD5Util.getMD5("ls"));
+
+    }
+
 }
