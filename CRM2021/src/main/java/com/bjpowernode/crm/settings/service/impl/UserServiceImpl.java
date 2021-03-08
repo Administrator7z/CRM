@@ -11,7 +11,7 @@ import java.util.Map;
 @Service
 public class UserServiceImpl implements UserService {
     @Autowired
-    UserMapper userMapper;
+    private UserMapper userMapper;
     @Override
     public User queryUserByLoginActAndPwd(Map<String, Object> map) {
         return userMapper.selectUserByLoingActAndPwd(map);

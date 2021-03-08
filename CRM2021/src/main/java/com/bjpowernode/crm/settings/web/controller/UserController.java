@@ -68,10 +68,10 @@ public class UserController {
         ReturnObject returnObject = new ReturnObject();
         if (user == null) {
             returnObject.setCode(Contants.RETURN_OBJECT_CODE_FAIL);
-            returnObject.setMassage("账号密码错误");
+            returnObject.setMessage("账号密码错误");
         } else if ("0".equals(user.getLockState())) {
             returnObject.setCode(Contants.RETURN_OBJECT_CODE_FAIL);
-            returnObject.setMassage("账号锁定");
+            returnObject.setMessage("账号锁定");
         } else {
             returnObject.setCode(Contants.RETURN_OBJECT_CODE_SUCCESS);
             session.setAttribute(Contants.SESSION_USER, user);

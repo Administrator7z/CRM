@@ -2,7 +2,7 @@ package com.bjpowernode.crm.commons.domain;
 
 public class ReturnObject {
     private String code;
-    private String massage;
+    private String message;
     private Object retData;
 
     public String getCode() {
@@ -13,12 +13,12 @@ public class ReturnObject {
         this.code = code;
     }
 
-    public String getMassage() {
-        return massage;
+    public String getMessage() {
+        return message;
     }
 
-    public void setMassage(String massage) {
-        this.massage = massage;
+    public void setMessage(String message) {
+        this.message = message;
     }
 
     public Object getRetData() {
@@ -29,12 +29,5 @@ public class ReturnObject {
         this.retData = retData;
     }
 
-    @Override
-    public String toString() {
-        return "ReturnObject{" +
-                "code='" + code + '\'' +
-                ", massage='" + massage + '\'' +
-                ", retData=" + retData +
-                '}';
-    }
+
 }
