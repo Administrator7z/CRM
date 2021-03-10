@@ -89,14 +89,14 @@
     code = #{code}
   </select>
 
-  <update id="updateDicTtype" parameterType="com.bjpowernode.crm.settings.domain.DicType">
-    update tbl_dic_type
+  <update id="updateDicType" parameterType="com.bjpowernode.crm.settings.domain.DicType">
+        update tbl_dic_type
         set name=#{name},description=#{description}
         where code=#{code}
   </update>
   
-  <delete id="deleteDicType" parameterType="com.bjpowernode.crm.settings.domain.DicType">
-    delete tbl_dic_type where code in
+  <delete id="deleteDicTypeByCodes" parameterType="string">
+    delete from tbl_dic_type where code in
     <foreach collection="array" item="code" open="(" close=")" separator=",">
       #{code}
     </foreach>

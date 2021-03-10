@@ -6,4 +6,8 @@ import java.util.List;
 
 public interface DicVlaueService {
     List<DicValue> queryAllDicValues();
+
+    int saveCreateDicValue(DicValue dicValue);
+
+
 }

@@ -33,27 +33,25 @@ public class DicTypeController {
 
     @RequestMapping(value = "settings/dictionary/type/saveCreateDicType.do")
     @ResponseBody
-    public Object save(String code, String name, String description) {
-        DicType dicType = new DicType();
-        dicType.setCode(code);
-        dicType.setName(name);
-        dicType.setDescription(description);
+    public Object saveCreateDicType(DicType dicType) {
         ReturnObject returnObject = new ReturnObject();
-        if (dicTypeService.saveCreateDicType(dicType) != 1) {
+        if (dicTypeService.saveCreateDicType(dicType) > 0) {
+            returnObject.setCode(Contants.RETURN_OBJECT_CODE_SUCCESS);
+        } else {
             returnObject.setCode(Contants.RETURN_OBJECT_CODE_FAIL);
             returnObject.setMessage("保存失败");
-        } else {
-            returnObject.setCode(Contants.RETURN_OBJECT_CODE_SUCCESS);
         }
         return returnObject;
     }
 
     @RequestMapping("settings/dictionary/type/checkCode.do")
     @ResponseBody
-    public Object verify(String code) {
+    public Object checkCode(String code) {
         DicType dicType = dicTypeService.queryDicTypeByCode(code);
         ReturnObject returnObject = new ReturnObject();
-        if (dicType != null) {
+        if (dicType == null) {
+            returnObject.setCode(Contants.RETURN_OBJECT_CODE_SUCCESS);
+        } else {
             returnObject.setCode(Contants.RETURN_OBJECT_CODE_FAIL);
             returnObject.setMessage("id重复");
         }
@@ -62,22 +60,32 @@ public class DicTypeController {
 
     @RequestMapping("settings/dictionary/type/editDicType.do")
     public String editDicType(String code, Model model) {
-        //调用service层方法，查询数据字典类型
         DicType dicType = dicTypeService.queryDicTypeByCode(code);
-        //把数据保存到reuquest中
         model.addAttribute("dicType", dicType);
-        //请求转发
         return "settings/dictionary/type/edit";
+    }
+
+    @RequestMapping("settings/dictionary/type/saveEditDicType.do")
+    @ResponseBody
+    public Object saveEditDicType(DicType dicType) {
+        ReturnObject returnObject = new ReturnObject();
+        if (dicTypeService.saveEditDicType(dicType) > 0) {
+            returnObject.setCode(Contants.RETURN_OBJECT_CODE_SUCCESS);
+        } else {
+            returnObject.setCode(Contants.RETURN_OBJECT_CODE_FAIL);
+            returnObject.setMessage("更新失败");
+        }
+
+        return returnObject;
     }
 
     @RequestMapping("settings/dictionary/type/deleteDicTypeByCodes.do")
     @ResponseBody
-    public Object del(String[] code) {
+    public Object deleteDicTypeByCodes(String[] code) {
         ReturnObject returnObject = new ReturnObject();
-        int num = dicTypeService.deleteDicTypeByCodes(code);
-        if (num > 0) {
+        if (dicTypeService.deleteDicTypeByCodes(code) > 0) {
             returnObject.setCode(Contants.RETURN_OBJECT_CODE_SUCCESS);
-        }else {
+        } else {
             returnObject.setCode(Contants.RETURN_OBJECT_CODE_FAIL);
             returnObject.setMessage("忙");
         }

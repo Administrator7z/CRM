@@ -2,7 +2,6 @@ package com.bjpowernode.crm.settings.service.impl;
 
 import com.bjpowernode.crm.settings.domain.DicValue;
 import com.bjpowernode.crm.settings.mapper.DicValueMapper;
-import com.bjpowernode.crm.settings.service.DicTypeService;
 import com.bjpowernode.crm.settings.service.DicVlaueService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,4 +16,11 @@ public class DicVlaueServiceImpl implements DicVlaueService {
     public List<DicValue> queryAllDicValues() {
         return dicValueMapper.selectAllDicValues();
     }
+
+    @Override
+    public int saveCreateDicValue(DicValue dicValue) {
+        return dicValueMapper.insertDicValue(dicValue);
+    }
+
+
 }
