@@ -33,7 +33,7 @@ public class UserServiceTest extends BaseTest {
     }
     @Test
     public void tt(){
-        System.out.println(MD5Util.getMD5("ls"));
+        System.out.println(MD5Util.getMD5("zs"));
 
     }
 

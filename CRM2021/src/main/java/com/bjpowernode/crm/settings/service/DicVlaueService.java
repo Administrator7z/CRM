@@ -9,5 +9,9 @@ public interface DicVlaueService {
 
     int saveCreateDicValue(DicValue dicValue);
 
+    DicValue queryDicValueById(String id);
 
+    int  saveEditDicValue(DicValue dicValue);
+
+    int deleteDicValueByids(String[] ids);
 }

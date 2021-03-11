@@ -13,6 +13,7 @@ String basePath=request.getScheme()+"://"+request.getServerName()+":"+request.ge
 <script type="text/javascript" src="jquery/bootstrap_3.3.0/js/bootstrap.min.js"></script>
 	<script type="text/javascript">
 		$(function () {
+
 			//给"创建"按钮添加单击事件
 			$("#createDicValueBtn").click(function () {
 				//发送同步请求
@@ -52,8 +53,11 @@ String basePath=request.getScheme()+"://"+request.getServerName()+":"+request.ge
                 }
             });
 
-            //实现全选和取消全选(作业)
-
+            //实现全选和取消全选
+			$("#chkedAll").click(function () {
+				//让列表中的checkbox的checked属性值和全选按钮的checked属性值保持一致
+				$("#tBody input[type='checkbox']").prop("checked",$("#chkedAll").prop("checked"));
+			});
             //给"编辑"按钮添加单击事件
             $("#editDicValueBtn").click(function () {
                 //收集参数
@@ -94,7 +98,7 @@ String basePath=request.getScheme()+"://"+request.getServerName()+":"+request.ge
 		<table class="table table-hover">
 			<thead>
 				<tr style="color: #B3B3B3;">
-					<td><input type="checkbox" /></td>
+					<td><input type="checkbox" id = "chkedAll" /></td>
 					<td>序号</td>
 					<td>字典值</td>
 					<td>文本</td>

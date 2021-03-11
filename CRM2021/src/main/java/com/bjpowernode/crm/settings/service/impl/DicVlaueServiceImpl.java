@@ -22,5 +22,20 @@ public class DicVlaueServiceImpl implements DicVlaueService {
         return dicValueMapper.insertDicValue(dicValue);
     }
 
+    @Override
+    public DicValue queryDicValueById(String id) {
+        return dicValueMapper.selectDicValueById(id);
+    }
+
+    @Override
+    public int saveEditDicValue(DicValue dicValue) {
+        return dicValueMapper.updateDicValue(dicValue);
+    }
+
+    @Override
+    public int deleteDicValueByids(String[] ids) {
+        return dicValueMapper.deleteDicValueByIds(ids);
+    }
+
 
 }
