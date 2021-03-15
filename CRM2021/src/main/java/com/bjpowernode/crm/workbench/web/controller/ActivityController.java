@@ -1,5 +1,6 @@
 package com.bjpowernode.crm.workbench.web.controller;
 
+
 import com.bjpowernode.crm.commons.contants.Contants;
 import com.bjpowernode.crm.commons.domain.ReturnObject;
 import com.bjpowernode.crm.commons.utils.DateUtils;
@@ -8,6 +9,7 @@ import com.bjpowernode.crm.settings.domain.User;
 import com.bjpowernode.crm.settings.service.UserService;
 import com.bjpowernode.crm.workbench.domain.Activity;
 import com.bjpowernode.crm.workbench.service.ActivityService;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,13 +22,17 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import java.util.List;
+
 @Controller
 public class ActivityController {
 
     @Autowired
     private UserService userService;
+
     @Autowired
     private ActivityService activityService;
+
 
     @RequestMapping("workbench/activity/index.do")
     public String index(Model model){
