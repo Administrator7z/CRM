@@ -8,7 +8,9 @@ import com.bjpowernode.crm.settings.domain.DicValue;
 import com.bjpowernode.crm.settings.domain.User;
 import com.bjpowernode.crm.settings.service.DicVlaueService;
 import com.bjpowernode.crm.settings.service.UserService;
+import com.bjpowernode.crm.workbench.domain.Activity;
 import com.bjpowernode.crm.workbench.domain.Clue;
+import com.bjpowernode.crm.workbench.service.ActivityService;
 import com.bjpowernode.crm.workbench.service.ClueService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -27,9 +29,10 @@ public class ClueController {
     private ClueService clueService;
     @Autowired
     private UserService userService;
-
     @Autowired
     private DicVlaueService dicValueService;
+    @Autowired
+    private ActivityService activityService;
 
 
     @RequestMapping("workbench/clue/index.do")
@@ -74,7 +77,9 @@ public class ClueController {
     @RequestMapping("/workbench/clue/detailClue.do")
     public String detailClue(String id,Model model){
         Clue clue=clueService.queryClueForDetailById(id);
+        List<Activity> activityList=activityService.queryActivityForDetailByClueId(id);
         model.addAttribute("clue",clue);
+        model.addAttribute("activityList",activityList);
         return "workbench/clue/detail";
     }
 }

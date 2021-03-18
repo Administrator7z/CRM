@@ -83,4 +83,12 @@
       where id=#{id}
     </update>
 
+  <select id="selectActivityForDetailByClueId" parameterType="string" resultMap="BaseResultMap">
+      select a.name,a.start_date,a.end_date,u.name as owner,a.id
+      from tbl_activity a
+      join tbl_user u on a.owner=u.id
+      join tbl_clue_activity_relation car on a.id=car.activity_id
+      where car.clue_id=#{clueId}
+    </select>
+
 </mapper>

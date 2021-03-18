@@ -16,4 +16,7 @@ public interface ActivityMapper {
     Activity selectActivityById(String id);
 
     int updateActivity(Activity activity);
+
+    //根据cludId查询这条线索相关联的市场活动明细
+    List<Activity> selectActivityForDetailByClueId(String clueId);
 }

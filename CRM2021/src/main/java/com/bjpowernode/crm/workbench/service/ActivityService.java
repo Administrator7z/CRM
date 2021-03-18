@@ -16,5 +16,5 @@ public interface ActivityService {
 
     int saveEditActivity(Activity activity);
 
-
+    List<Activity> queryActivityForDetailByClueId(String id);
 }
