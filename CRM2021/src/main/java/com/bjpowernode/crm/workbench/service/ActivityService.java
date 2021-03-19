@@ -17,4 +17,7 @@ public interface ActivityService {
     int saveEditActivity(Activity activity);
 
     List<Activity> queryActivityForDetailByClueId(String id);
+
+    //查询未绑定的市场活动
+    List<Activity> searchActivityNoBoundById(Map<String,Object> map);
 }

@@ -19,4 +19,6 @@ public interface ActivityMapper {
 
     //根据cludId查询这条线索相关联的市场活动明细
     List<Activity> selectActivityForDetailByClueId(String clueId);
+    //查询未绑定的市场活动
+    List<Activity> searchActivityNoBoundById(Map<String, Object> map);
 }
