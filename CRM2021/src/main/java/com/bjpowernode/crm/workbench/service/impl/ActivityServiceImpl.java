@@ -48,4 +48,9 @@ public class ActivityServiceImpl implements ActivityService{
     public List<Activity> searchActivityNoBoundById(Map<String, Object> map) {
         return activityMapper.searchActivityNoBoundById(map);
     }
+
+    @Override
+    public List<Activity> queryActivityForDetailByIds(String[] ids) {
+        return activityMapper.selectActivityForDetailByIds(ids);
+    }
 }

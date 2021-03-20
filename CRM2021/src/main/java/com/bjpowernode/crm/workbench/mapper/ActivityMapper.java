@@ -21,4 +21,6 @@ public interface ActivityMapper {
     List<Activity> selectActivityForDetailByClueId(String clueId);
     //查询未绑定的市场活动
     List<Activity> searchActivityNoBoundById(Map<String, Object> map);
+    //根据ids查询市场活动
+    List<Activity> selectActivityForDetailByIds(String[] ids);
 }

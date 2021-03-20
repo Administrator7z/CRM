@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bjpowernode.crm.workbench.mapper.ClueRemarkMapper">
+  <resultMap id="BaseResultMap" type="com.bjpowernode.crm.workbench.domain.ClueRemark">
+    <id column="id" jdbcType="CHAR" property="id" />
+    <result column="note_content" jdbcType="VARCHAR" property="noteContent" />
+    <result column="create_by" jdbcType="VARCHAR" property="createBy" />
+    <result column="create_time" jdbcType="CHAR" property="createTime" />
+    <result column="edit_by" jdbcType="VARCHAR" property="editBy" />
+    <result column="edit_time" jdbcType="CHAR" property="editTime" />
+    <result column="edit_flag" jdbcType="CHAR" property="editFlag" />
+    <result column="clue_id" jdbcType="CHAR" property="clueId" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, note_content, create_by, create_time, edit_by, edit_time, edit_flag, clue_id
+  </sql>
+
+</mapper>

@@ -7,4 +7,6 @@ import java.util.List;
 
 public interface ClueActivityRelationMapper {
     int insertClueActivityRelationByList(List<ClueActivityRelation> relationList);
+
+    int deleteClueActivityRelationByClueIdActivityId(ClueActivityRelation relation);
 }

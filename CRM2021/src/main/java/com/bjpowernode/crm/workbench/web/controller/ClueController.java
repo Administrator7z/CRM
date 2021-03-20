@@ -89,19 +89,20 @@ public class ClueController {
     @RequestMapping("workbench/clue/searchActivity.do")
     @ResponseBody
     public Object searchActivity(String activityName, String clueId) {
-        Map<String,Object> map = new HashMap<>();
-        map.put("activityName",activityName);
-        map.put("clueId",clueId);
+        Map<String, Object> map = new HashMap<>();
+        map.put("activityName", activityName);
+        map.put("clueId", clueId);
         List<Activity> activityList = activityService.searchActivityNoBoundById(map);
         return activityList;
     }
+
     //添加绑定
     @RequestMapping("workbench/clue/saveBundActivity.do")
     @ResponseBody
-    public Object saveBundActivity(String clueId,String[] activityId){
+    public Object saveBundActivity(String clueId, String[] activityId) {
         List<ClueActivityRelation> relationList = new ArrayList<>();
-        ClueActivityRelation relation= null;
-        ReturnObject returnObject= new ReturnObject();
+        ClueActivityRelation relation = null;
+        ReturnObject returnObject = new ReturnObject();
         for (String s : activityId) {
             relation = new ClueActivityRelation();
             relation.setId(UUIDUtils.getUUID());
@@ -109,9 +110,11 @@ public class ClueController {
             relation.setActivityId(s);
             relationList.add(relation);
         }
-        if (clueActivityRelationService.saveCreateClueActivityRelationByList(relationList) >0){
-                returnObject.setCode(Contants.RETURN_OBJECT_CODE_SUCCESS);
-        }else {
+        if (clueActivityRelationService.saveCreateClueActivityRelationByList(relationList) > 0) {
+            returnObject.setCode(Contants.RETURN_OBJECT_CODE_SUCCESS);
+            List<Activity> activityList = activityService.queryActivityForDetailByIds(activityId);
+            returnObject.setRetData(activityList);
+        } else {
             returnObject.setCode(Contants.RETURN_OBJECT_CODE_FAIL);
             returnObject.setMessage("失败");
 
@@ -121,4 +124,60 @@ public class ClueController {
     }
 
     //解除绑定
+    @RequestMapping("workbench/clue/saveUnbundActivity.do")
+    @ResponseBody
+    public Object saveUnbundActivity(ClueActivityRelation relation) {
+        ReturnObject returnObject = new ReturnObject();
+        if (clueActivityRelationService.deleteClueActivityRelationByClueIdActivityId(relation) > 0) {
+            returnObject.setCode(Contants.RETURN_OBJECT_CODE_SUCCESS);
+
+        } else {
+            returnObject.setCode(Contants.RETURN_OBJECT_CODE_FAIL);
+            returnObject.setMessage("");
+        }
+        return returnObject;
+
+    }
+    //线索转换跳转
+    @RequestMapping("workbench/clue/convertClue.do")
+    public String convertClue(String id,Model model){
+        Clue clue = clueService.queryClueForDetailById(id);
+        model.addAttribute("clue",clue);
+        return "workbench/clue/convert";
+    }
+    //转换
+    @RequestMapping("workbench/clue/saveConvertClue.do")
+    @ResponseBody
+    public Object saveConvertClue(String clueId,String isCreateTran,String amountOfMoney,String tradeName,String expectedClosingDate,
+                                  String stage,String activityId,HttpSession session) {
+        Map<String,Object> map=new HashMap<>();
+        map.put("clueId",clueId);
+        map.put("isCreateTran",isCreateTran);
+        map.put("amountOfMoney",amountOfMoney);
+        map.put("tradeName",tradeName);
+        map.put("expectedClosingDate",expectedClosingDate);
+        map.put("stage",stage);
+        map.put("activityId",activityId);
+        map.put("sessionUser",session.getAttribute(Contants.SESSION_USER));
+
+        ReturnObject returnObject=new ReturnObject();
+        try {
+            //调用service层方法，保存线索转换
+            clueService.saveConvert(map);
+
+            returnObject.setCode(Contants.RETURN_OBJECT_CODE_SUCCESS);
+        }catch (Exception e){
+            e.printStackTrace();
+            returnObject.setCode(Contants.RETURN_OBJECT_CODE_FAIL);
+            returnObject.setMessage("系统忙，请稍后重试....");
+        }
+
+        return returnObject;
+
+    }
+
+
+
+
+
 }

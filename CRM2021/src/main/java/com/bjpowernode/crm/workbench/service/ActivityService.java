@@ -20,4 +20,6 @@ public interface ActivityService {
 
     //查询未绑定的市场活动
     List<Activity> searchActivityNoBoundById(Map<String,Object> map);
+
+    List<Activity> queryActivityForDetailByIds(String[] ids);
 }
