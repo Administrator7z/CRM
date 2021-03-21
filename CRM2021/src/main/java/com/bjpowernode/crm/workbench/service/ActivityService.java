@@ -22,4 +22,6 @@ public interface ActivityService {
     List<Activity> searchActivityNoBoundById(Map<String,Object> map);
 
     List<Activity> queryActivityForDetailByIds(String[] ids);
+
+    List<Activity> queryAllActivityForDetail();
 }

@@ -23,4 +23,6 @@ public interface ActivityMapper {
     List<Activity> searchActivityNoBoundById(Map<String, Object> map);
     //根据ids查询市场活动
     List<Activity> selectActivityForDetailByIds(String[] ids);
+    //搜索全部 下载用
+    List<Activity> selectAllActivityForDetail();
 }

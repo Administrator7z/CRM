@@ -4,9 +4,7 @@ import com.bjpowernode.crm.commons.utils.DateUtils;
 import com.bjpowernode.crm.commons.utils.UUIDUtils;
 import com.bjpowernode.crm.settings.domain.User;
 import com.bjpowernode.crm.workbench.domain.*;
-import com.bjpowernode.crm.workbench.mapper.ClueMapper;
-import com.bjpowernode.crm.workbench.mapper.ContactsMapper;
-import com.bjpowernode.crm.workbench.mapper.CustomerMapper;
+import com.bjpowernode.crm.workbench.mapper.*;
 import com.bjpowernode.crm.workbench.service.ClueService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -25,6 +23,21 @@ public class ClueServiceImpl implements ClueService {
     private CustomerMapper customerMapper;
     @Autowired
     private ContactsMapper contactsMapper;
+    @Autowired
+    private ClueRemarkMapper clueRemarkMapper;
+    @Autowired
+    private CustomerRemarkMapper customerRemarkMapper;
+    @Autowired
+    private ContactsRemarkMapper contactsRemarkMapper;
+    @Autowired
+    private ClueActivityRelationMapper clueActivityRelationMapper;
+    @Autowired
+    private ContactsActivityRelationMapper contactsActivityRelationMapper;
+    @Autowired
+    private TranMapper tranMapper;
+    @Autowired
+    private TranRemarkMapper tranRemarkMapper;
+
 
     @Override
     public int saveCreateClue(Clue clue) {
@@ -38,7 +51,7 @@ public class ClueServiceImpl implements ClueService {
 
     @Override
     public void saveConvert(Map<String, Object> map) {
-        /*String clueId=(String)map.get("clueId");
+        String clueId=(String)map.get("clueId");
         User user= (User)map.get("sessionUser");
         String isCreateTran=(String)map.get("isCreateTran");
 
@@ -176,7 +189,6 @@ public class ClueServiceImpl implements ClueService {
         clueActivityRelationMapper.deleteClueActivityRelationByClueId(clueId);
         //根据id删除该线索
         clueMapper.deleteClueById(clueId);
-            */
     }
 
 

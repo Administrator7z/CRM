@@ -14,5 +14,12 @@
   <sql id="Base_Column_List">
     id, note_content, create_by, create_time, edit_by, edit_time, edit_flag, clue_id
   </sql>
-
+  <select id="selectClueRemarkByClueId" parameterType="string" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"></include>
+        where clue_id = #{id}
+  </select>
+  <delete id="deleteClueRemarkByClueId" parameterType="string">
+    delete from tbl_clue_remark where clue_id=#{clueId}
+  </delete>
 </mapper>

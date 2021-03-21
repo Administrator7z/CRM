@@ -146,7 +146,7 @@ String basePath=request.getScheme()+"://"+request.getServerName()+":"+request.ge
 					<tbody>
 						<tr>
 							<td><input type="checkbox" /></td>
-							<td><a style="text-decoration: none; cursor: pointer;" onclick="window.location.href='workbench/transaction/detailTran.do?id=7667154af9a246dba4e92a53767758a4';">动力节点-交易测试04</a></td>
+							<td><a style="text-decoration: none; cursor: pointer;" onclick="window.location.href='workbench/transaction/detailTran.do?id=2a15e46002804cc2b8148c46557714de';">动力节点-交易测试04</a></td>
 							<td>动力节点</td>
 							<td>谈判/复审</td>
 							<td>新业务</td>

@@ -16,4 +16,6 @@ public interface ClueMapper {
     Clue selectClueForDetailById(String id);
     //根据id查询线索信息
     Clue selectClueById(String clueId);
+
+    void deleteClueById(String clueId);
 }

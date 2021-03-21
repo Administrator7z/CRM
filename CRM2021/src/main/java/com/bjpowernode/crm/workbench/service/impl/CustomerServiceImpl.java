@@ -10,6 +10,11 @@ import java.util.List;
 @Service
 public class CustomerServiceImpl implements CustomerService {
 
+    @Autowired
+    private CustomerMapper customerMapper;
 
-
+    @Override
+    public List<Customer> queryCustomerByName(String name) {
+        return customerMapper.selectCustomerByName(name);
+    }
 }

@@ -164,7 +164,6 @@ public class ClueController {
         try {
             //调用service层方法，保存线索转换
             clueService.saveConvert(map);
-
             returnObject.setCode(Contants.RETURN_OBJECT_CODE_SUCCESS);
         }catch (Exception e){
             e.printStackTrace();

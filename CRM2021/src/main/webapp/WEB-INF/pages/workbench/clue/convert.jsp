@@ -97,13 +97,13 @@ String basePath=request.getScheme()+"://"+request.getServerName()+":"+request.ge
 			$.ajax({
 				url:'workbench/clue/saveConvertClue.do',
 				data:{
-					clueId:clueId,
-					isCreateTran:isCreateTran,
-					amountOfMoney:amountOfMoney,
-					tradeName:tradeName,
-					expectedClosingDate:expectedClosingDate,
-					stage:stage,
-					activityId:activityId
+					clueId:clueId, //线索id
+					isCreateTran:isCreateTran, //是否创建交易
+					amountOfMoney:amountOfMoney, //金额
+					tradeName:tradeName,  //交易名称
+					expectedClosingDate:expectedClosingDate, //成交日期
+					stage:stage,  //阶段
+					activityId:activityId //市场活动id
 				},
 				type:'post',
 				dataType:'json',

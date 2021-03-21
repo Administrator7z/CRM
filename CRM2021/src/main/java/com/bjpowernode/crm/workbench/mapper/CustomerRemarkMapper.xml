@@ -15,4 +15,16 @@
     id, note_content, create_by, create_time, edit_by, edit_time, edit_flag, customer_id
   </sql>
 
+
+
+
+
+  <insert id="insertCustomerRemarkByList" parameterType="com.bjpowernode.crm.workbench.domain.CustomerRemark">
+    insert into tbl_customer_remark(id, note_content, create_by, create_time, edit_by, edit_time, edit_flag, customer_id)
+    values
+    <foreach collection="list" item="obj" separator=",">
+      (#{obj.id},#{obj.noteContent},#{obj.createBy},#{obj.createTime},#{obj.editBy},#{obj.editTime},#{obj.editFlag},#{obj.customerId})
+    </foreach>
+  </insert>
+
 </mapper>

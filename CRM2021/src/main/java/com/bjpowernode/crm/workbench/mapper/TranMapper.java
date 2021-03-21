@@ -7,4 +7,8 @@ import java.util.List;
 
 public interface TranMapper {
     List<Tran> selectAll(String name);
+
+    void insert(Tran tran);
+
+    Tran selectTranForDetailById(String id);
 }

@@ -26,5 +26,11 @@
     create_by, create_time, edit_by, edit_time, description, contact_summary, next_contact_time, 
     address
   </sql>
+  <insert id="insertContacts" parameterType="com.bjpowernode.crm.workbench.domain.Contacts">
+    insert into tbl_contacts(id, owner, source, customer_id, full_name, appellation, email, mphone, job, birth,
+    create_by, create_time, description, contact_summary, next_contact_time,
+    address)
+    values (#{id},#{ owner},#{ source},#{ customerId},#{ fullName},#{ appellation},#{ email},#{ mphone},#{ job},#{ birth},#{createBy},#{ createTime},#{ description},#{ contactSummary},#{ nextContactTime},#{address})
+  </insert>
 
 </mapper>

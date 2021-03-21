@@ -14,5 +14,11 @@
   <sql id="Base_Column_List">
     id, note_content, create_by, create_time, edit_by, edit_time, edit_flag, contacts_id
   </sql>
-
+  <insert id="insertContactsRemarkByList" parameterType="com.bjpowernode.crm.workbench.domain.ContactsRemark">
+    insert into tbl_contacts_remark(id, note_content, create_by, create_time, edit_by, edit_time, edit_flag, contacts_id)
+    values
+    <foreach collection="list" item="obj" separator=",">
+      (#{obj.id},#{obj.noteContent},#{obj.createBy},#{obj.createTime},#{obj.editBy},#{obj.editTime},#{obj.editFlag},#{obj.contactsId})
+    </foreach>
+  </insert>
 </mapper>

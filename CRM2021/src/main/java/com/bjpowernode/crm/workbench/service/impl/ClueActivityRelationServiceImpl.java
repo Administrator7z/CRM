@@ -11,6 +11,8 @@ import java.util.List;
 public class ClueActivityRelationServiceImpl implements ClueActivityRelationService {
     @Autowired
     private ClueActivityRelationMapper clueActivityRelationMapper;
+
+
     @Override
     public int saveCreateClueActivityRelationByList(List<ClueActivityRelation> relationList) {
         return clueActivityRelationMapper.insertClueActivityRelationByList(relationList);
